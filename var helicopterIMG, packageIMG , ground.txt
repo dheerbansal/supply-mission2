@@ -1,0 +1,44 @@
+var helicopterIMG, packageIMG , ground
+const Engine = Matter.Engine;
+const World = Matter.World;
+const Bodies = Matter.Bodies;
+const Body = Matter.Body;
+
+function preload(){
+helicopterIMG = loadImage("helicopter.png");
+packageIMG = loadImage("package.png");
+}
+
+function setup(){
+    createCanvas(400,800)
+    rectMode(CENTER);
+
+    ground = createSprite(400,800,300,15);
+    ground.isStatic = true;
+    ground.shapeColor = "white";
+    ground.scale = 3;
+
+    //helicopter = createSprite(200,200,25,15);
+    //helicopter.addImage(helicopterIMG);
+   // helicopter.scale = 1;
+
+    package = createSprite(50,300,25,15);
+    package.addImage(packageIMG);
+    package.scale = 5;
+
+    }
+
+    function draw(){
+        rectMode(CENTER)
+        background("black")
+
+        drawSprites();     
+    }
+
+    function keyPressed(){
+        if(keyCode === DOWN_ARROW){
+            package.velocityX = -3;
+            package.isStatic(ground);
+        }
+    }
+
